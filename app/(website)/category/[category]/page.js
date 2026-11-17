@@ -16,12 +16,14 @@ async function getCategoryPosts(category) {
   return { title, posts };
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params: pendingParams }) {
+  const params = await pendingParams;
   const data = await getCategoryPosts(params.category);
   return { title: data.title };
 }
 
-export default async function PostDefault({ params }) {
+export default async function PostDefault({ params: pendingParams }) {
+  const params = await pendingParams;
   const data = await getCategoryPosts(params.category);
   const { title, posts } = data;
   return <Category posts={posts} title={title} />;

@@ -1,5 +1,3 @@
-'use client'
-
 import "./style.css"
 
 import { NextStudio } from 'next-sanity/studio'

@@ -5,7 +5,8 @@ import { Suspense } from "react";
 import Container from "@/components/container";
 import Loading from "@/components/loading";
 
-export default async function SearchPage({ searchParams }) {
+export default async function SearchPage({ searchParams: pendingParams }) {
+  const searchParams = await pendingParams;
   const query = searchParams.q;
   return (
     <>

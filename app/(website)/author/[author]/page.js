@@ -11,12 +11,14 @@ async function getAuthor(slug) {
   return posts?.[0]?.author || {};
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params: pendingParams }) {
+  const params = await pendingParams;
   const author = await getAuthor(params.author);
   return { title: author.title };
 }
 
-export default async function AuthorPage({ params }) {
+export default async function AuthorPage({ params: pendingParams }) {
+  const params = await pendingParams;
   const posts = await getAuthorPostsBySlug(params.author);
   const author = await getAuthor(params.author);
   return <Author posts={posts} author={author} />;

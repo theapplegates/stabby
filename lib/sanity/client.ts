@@ -124,7 +124,7 @@ export async function searchPosts(query = "") {
   if (client) {
     return (
       (await client.fetch(searchquery, {
-        query: query
+        term: query
       })) || []
     );
   }
